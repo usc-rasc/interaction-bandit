@@ -1,0 +1,19 @@
+<package>
+  <description brief="bandit_driver_prototype">
+
+     bandit_driver_prototype
+
+  </description>
+  <author>Edward T. Kaszubski ( ekaszubski@gmail.com )</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/bandit_driver_prototype</url>
+  <depend package="quickdev_cpp"/>
+  <depend package="nodelet"/>
+  <depend package="libbandit"/>
+  <depend package="bandit_msgs"/>
+  <depend package="robot_state_publisher"/>
+  <export>
+    <nodelet plugin="${prefix}/nodelets/nodelet_plugins.xml"/>
+  </export>
+</package>
