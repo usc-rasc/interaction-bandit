@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.6.0)
+include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+
+rospack(libbandit)
+
+FIND_PACKAGE(Boost COMPONENTS thread)
+
+add_library(bandit src/bandit.cpp src/smartservo.cpp)
+add_executable(testbandit src/testbandit.cpp)
+target_link_libraries(testbandit bandit ${Boost_LIBRARIES})
+add_executable(servohold src/servohold.cpp)
+target_link_libraries(servohold bandit ${Boost_LIBRARIES})
