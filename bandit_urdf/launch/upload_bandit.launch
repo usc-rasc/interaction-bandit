@@ -1,0 +1,4 @@
+<launch>
+  <rosparam param="robot_description" command="load" file="$(find bandit_urdf)/urdf/bandit_defs.urdf" />
+</launch>
+

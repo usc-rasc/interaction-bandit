@@ -1,0 +1,158 @@
+<robot name="bandit_3.0">
+	<link name="head" />
+	<link name="neck" />
+	<link name="torso" />
+	
+	<link name="r_shoulder" />
+	<link name="r_upperarm" />
+	<link name="r_elbow" />
+	<link name="r_forearm" />
+	<link name="r_wrist" />
+	<link name="r_hand" />
+	<link name="r_thumb" />
+	
+	<link name="l_shoulder" />
+	<link name="l_upperarm" />
+	<link name="l_elbow" />
+	<link name="l_forearm" />
+	<link name="l_wrist" />
+	<link name="l_hand" />
+	<link name="l_thumb" />
+	
+	<!--connects torso to world through fixed link-->
+	<joint name="torso_fixed" type="fixed">
+		<parent link="world" />
+		<child link="torso" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
+	
+	<joint name="head_rotation" type="revolute">
+		<parent link="torso" />
+		<child link="neck" />
+		<origin xyz="0 0.28 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100"/>
+	</joint>
+
+	<joint name="head_nod" type="revolute">
+		<parent link="neck" />
+		<child link="head" />
+		<origin xyz="0 0.065 0" rpy="0 0 0" />	
+		<axis xyz="1 0 0" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+		
+	<!--right joints-->
+	<joint name="r_shoulder_rotation" type="revolute"> 
+		<parent link="torso" />
+		<child link="r_shoulder" />
+		<origin xyz="0.115 0.23 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="r_shoulder_raiselower" type="revolute"> 
+		<parent link="r_shoulder" />
+		<child link="r_upperarm" />	
+		<origin xyz="0.045 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="r_elbow_rotation" type="revolute">
+		<parent link="r_upperarm" />
+		<child link="r_elbow" />
+		<origin xyz="0 -0.12 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="r_elbow_raiselower" type="revolute">
+		<parent link="r_elbow" />
+		<child link="r_forearm" />
+		<origin xyz="0 -0.045 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="r_wrist_rotation" type="revolute">
+		<parent link="r_forearm" />
+		<child link="r_wrist" />
+		<origin xyz="0 -0.12 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="r_wrist_raiselower" type="revolute">
+		<parent link="r_wrist" />
+		<child link="r_hand" />
+		<origin xyz="0 -0.04 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="r_thumb" type="revolute">
+		<parent link="r_hand" />
+		<child link="r_thumb" />
+		<origin xyz="-0.03 -0.02 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />	
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<!--left joints-->
+	<joint name="l_shoulder_rotation" type="revolute">
+		<parent link="torso" />
+		<child link="l_shoulder" />
+		<origin xyz="-0.115 0.23 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="l_shoulder_raiselower" type="revolute">
+		<parent link="l_shoulder" />
+		<child link="l_upperarm" />
+		<origin xyz="-0.045 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="l_elbow_rotation" type="revolute">
+		<parent link="l_upperarm" />
+		<child link="l_elbow" />
+		<origin xyz="0 -0.12 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="l_elbow_raiselower" type="revolute">
+		<parent link="l_elbow" />
+		<child link="l_forearm" />
+		<origin xyz="0 -0.045 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="l_wrist_rotation" type="revolute">
+		<parent link="l_forearm" />
+		<child link="l_wrist" />
+		<origin xyz="0 -0.12 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="l_wrist_raiselower" type="revolute">
+		<parent link="l_wrist" />
+		<child link="l_hand" />
+		<origin xyz="0 -0.04 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	
+	<joint name="l_thumb" type="revolute">
+		<parent link="l_hand" />
+		<child link="l_thumb" />
+		<origin xyz="0.03 -0.02 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit upper="1.57" lower="-1.57" effort="100" velocity="100" />
+	</joint>
+	

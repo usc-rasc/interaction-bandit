@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <include filename="$(find bandit_urdf)/defs/torso.gazebo.xacro" />
+
+
+    <xacro:macro name="torso" params="name parent *origin">
+  <!--
+    <joint name = "${name}_joint" type = "fixed">
+        <insert_block name="origin"/>
+        <origin xyz="0 0 0.12"/>
+        <axis xyz="0 0 1"/>
+            <child link="${name}_link"/>
+        <parent link="${parent}"/>
+      </joint>
+-->
+      <link name = "${name}_link">
+        <inertial>
+        <mass value="0"/>
+          <origin xyz="0 0 0"/>
+        <inertia ixx="1" ixy="0" ixz="0"
+                   iyy="1" iyz="0"
+                 izz="1"/>
+        </inertial>
+        <visual name="${name}_visual">
+        <material name="Torso"/>
+          <origin xyz="0 0 0.0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+          <!--<origin xyz="0 0 0.05" rpy="${M_PI/2} 0 ${M_PI/2}"/>-->
+        <geometry name="${name}_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/body_small.stl"/>
+        <!--  <box size="0 0 0"/>-->
+          </geometry>
+
+        </visual>
+        <collision>
+        <origin xyz="0 0 -0.067" rpy="0 0 0"/>
+          <geometry>
+          <box size="0.152 0.228 0.282"/>
+          </geometry>
+      </collision>
+      </link>
+        <xacro:torso_gazebo name="${name}"/>
+    </xacro:macro>
+
+<!-- dasf -->
+    <link name="stop_link">
+        <inertial>
+            <mass value="0"/>
+            <origin xyz="0 0 0"/>
+            <inertia ixx="1" ixy="0" ixz="0"
+                 iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual name="base_visual">
+            <origin xyz="0 0 0" rpy="0 ${M_PI/2} ${M_PI}"/>
+            <geometry name="pioneer_geom">
+                <mesh filename="package://bandit_urdf/meshes/bandit_mesh/stop_switch_small.STL"/>
+            </geometry>
+            <material name="Red"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0 0 0"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="stop_joint" type="fixed">
+        <origin xyz="-0.08 0 -0.04" rpy="0 0 0"/>
+        <parent link="torso_link"/>
+        <child link="stop_link"/>
+    </joint>
+<!-- dasf -->
+</robot>

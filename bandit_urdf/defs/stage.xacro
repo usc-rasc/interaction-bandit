@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<!-- XML namespaces -->
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<property name="M_PI" value="3.1415926535897931" />
+
+<!-- Background -->
+
+	<link name="background_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0"
+ 				izz="1"/>
+		</inertial>
+		<visual name="background_visual">
+			<origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
+			<geometry name="background_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/background.stl"/>
+			</geometry>
+			<material name="BackgroundFile">
+				<texture filename="package://bandit_urdf/meshes/bandit_mesh/gradients/background6.jpg"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="background_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+		<parent link="bandit_torso_link"/>
+		<child link="background_link"/>
+	</joint>
+
+<!-- Ground -->
+	<link name="ground_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0"
+ 				izz="1"/>
+		</inertial>
+		<visual name="ground_visual">
+			<origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
+			<geometry name="ground_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/background.stl"/>
+			</geometry>
+			<material name="groundFile">
+				<texture filename="package://bandit_urdf/meshes/bandit_mesh/gradients/background5.jpg"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="ground_joint" type="fixed">
+		<origin xyz="0 0 2.112" rpy="0 0 0"/>
+		<parent link="bandit_torso_link"/>
+		<child link="ground_link"/>
+	</joint>
+
+</robot>
