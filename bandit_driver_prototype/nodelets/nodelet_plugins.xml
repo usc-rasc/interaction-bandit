@@ -1,0 +1,8 @@
+<library path="lib/libbandit_driver_prototype_nodelets">
+
+  <class name="bandit_driver_prototype/bandit_driver" type="bandit_driver_prototype::BanditDriverNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      todo: fill this in
+    </description>
+  </class>
+</library>
