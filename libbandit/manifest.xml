@@ -1,0 +1,10 @@
+<package>
+  <description>A lightweight driver for the bandit humanoid</description>
+  <author>Jeremy Leibs, Edward T. Kaszubski (ekaszubski@gmail.com)</author>
+  <license>BSD</license>
+  <review status="experimental" notes=""/>
+  <export>
+    <cpp cflags="-I${prefix}/include -std=c++0x" lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -lbandit"/>
+  </export>
+  <url></url>
+</package>
