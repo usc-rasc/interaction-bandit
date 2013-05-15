@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<joint name="bandit_logo_joint" type="fixed">
+		<origin xyz="0 0 0"/>
+		<axis xyz="0 1 0"/>
+		<parent link="bandit_torso_link"/>
+		<child link="bandit_logo"/>
+	</joint>
+
+	<link name="bandit_logo">
+		<inertial>
+			<origin xyz="0 0.15 0" rpy="${RCon*90} 0 ${RCon*90}"/>
+			<mass value="0"/>
+			<inertia ixx="0.866179142480" ixy="-0.06086507933"
+			ixz="-0.12118061183" iyy="0.87421714893"  
+			iyz="-0.05886609911" izz="0.27353821674"/>
+		</inertial>
+		<visual name="bandit_logo_visual">
+			<origin xyz="0.002 0.003 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+			<geometry name="bandit_logo_geom">
+			<mesh filename="package://bandit_urdf/meshes/bandit_mesh/logo2.stl"/>
+				<!--<box size="0.005 0.05 0.05"/>-->
+			</geometry>
+			<material name="Yellow"/>
+		</visual>
+		<collision name="bandit_logo_collision">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="bandit_logo_geom">
+				<box size="0.005 0.05 0.05"/>
+			</geometry>
+		</collision>
+	</link>	
+
+</robot>

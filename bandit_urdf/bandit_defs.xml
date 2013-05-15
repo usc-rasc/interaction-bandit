@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<robot name="bandit"
+       xmlns:xi="http://www.w3.org/2001/XInclude"
+			 xmlns:xacro="http://www.ros.org/wiki/xacro"
+       xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz"
+       xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+       xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering"
+       xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+
+
+	<!-- *********Trunk Joint********* -->
+	
+	<!-- Variables -->	
+	<property name="trunk_height" value="0.30"/>
+	<property name="trunk_width" value="0.24"/>
+	<property name="trunk_depth" value="0.14"/>
+	<property name="trunk_x" value="0.00"/>
+	<property name="trunk_y" value="0.00"/>
+	<property name="trunk_z" value="0.990"/>
+
+	<!--Joint and Link code-->
+	<joint name="trunk_joint" type="planar">
+		<parent link="world"/>
+		<origin xyz="${trunk_x} ${trunk_y} ${trunk_z}" rpy="0 0 0"/>
+		<child link="trunk_link"/>
+	</joint>
+
+	<link name="trunk_link">
+		<inertial>
+			<mass value="4"/>
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+							 iyy="1" iyz="0"
+							 izz="1"/>
+		</inertial>
+		<visual>
+
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="${trunk_width} ${trunk_depth} ${trunk_height}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="${trunk_width} ${trunk_depth} ${trunk_height}"/>
+			</geometry>
+		</collision>
+	</link>
+	<gazebo reference="trunk_link">
+	    <!--<material>Gazebo/LightWood</material>-->
+	    <mu1>50.0</mu1>
+	    <mu2>50.0</mu2>
+	    <kp>1000000.0</kp>
+	    <kd>1.0</kd>
+	</gazebo>
+	
+
+	<!--********Body Joint******* -->
+
+	<!--Variables-->
+	<property name="body_length" value="0.0571"/>
+	<property name="body_width" value="0.2159"/>
+	<property name="body_height" value="0.2667"/>
+	
+	<!--Joint and Link code-->
+	<joint name = "body_joint" type = "fixed">
+		<parent link = "trunk_link"/>
+		<origin xyz="0 0 ${trunk_height}" rpy="0 0 0"/>
+		<child link = "body_link"/>
+	</joint>
+	
+	<link name = "body_link">
+		<inertial>
+			<mass value="4"/>
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+							 iyy="1" iyz="0"
+							 izz="1"/>
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="${body_width} ${body_length} ${body_height}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="${body_width} ${body_length} ${body_height}"/> 
+			</geometry>
+		</collision> 
+	</link>
+	<gazebo reference="body_link">
+	    <mu1>50.0</mu1>
+	    <mu2>50.0</mu2>
+	    <kp>1000000.0</kp>
+	    <kd>1.0</kd>
+	</gazebo>
+	
+	<!--********Neck Joint******* -->
+
+	<!--Variables-->
+	<property name="neck_height" value="0.08"/>
+	<property name="neck_radius" value="0.035"/>
+	
+	<!-- Links and Joints -->
+	<joint name="neck_joint" type="continuous">
+		<parent link="body_link"/>
+		<origin xyz="0 0 ${body_height}" rpy="0 0 180"/>
+		<child link="neck_link"/>
+		<axis xyz="0 0 1" />
+
+	</joint>
+	
+	<link name = "neck_link">
+		<inertial>
+			<mass value="2"/>
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="${neck_radius}" length="${neck_height}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="${neck_radius}" length="${neck_height}"/>
+			</geometry>
+		</collision> 
+	</link>
+	<gazebo reference="neck_link">
+	    <mu1>50.0</mu1>
+	    <mu2>50.0</mu2>
+	    <kp>1000000.0</kp>
+	    <kd>1.0</kd>
+	</gazebo>
+
+	<!--********Head Joint******* -->
+	<!-- Adding square head to be able to tell if there is neck movement -->
+	<joint name="squareHead_joint" type="fixed">
+		<parent link="neck_link"/>
+		<origin xyz="0 0 ${neck_height}"/>
+		<child link="squareHead_link"/>
+	</joint>
+	
+	<link name="squareHead_link">
+		<inertial>
+			<mass value="2"/>
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+							 iyy="1" iyz="0"
+							 izz="1"/>
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size=".08 .08 .08"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size=".08 .08 .08"/>
+			</geometry>
+		</collision> 
+	</link>
+	<gazebo reference="squareHead_link">
+	    <mu1>50.0</mu1>
+	    <mu2>50.0</mu2>
+	    <kp>1000000.0</kp>
+	    <kd>1.0</kd>
+	</gazebo>
+	
+	
+	<!--Variables-->
+	<!--<property name="head_radius" value="0.06985"/>	
+	
+	<joint name="head_joint" type="fixed">
+		<parent link="neck_link"/>
+		<origin xyz="0 0 ${trunkBody_height}" rpy="0 0 0"/>
+		<child link="head_link"/>
+	</joint>
+	-->
+
+
+
+
+	<!--********Shoulder Joint******* -->
+
+	<!--Variables-->
+	<property name="shoulder_radius" value="0.0181"/>
+	
+	<joint name="shoulderRight_joint" type="continuous">
+		<parent link="body_link"/>
+		<origin xyz="${body_width/2} 0 ${body_height}" rpy="0 0 0"/>
+		<child link="shoulderRight_link"/>			
+	</joint>
+	
+	<link name="shoulderRight_link">
+		<inertial>
+			<mass value="2"/>
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+							 iyy="1" iyz="0"
+							 izz="1"/>
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="${shoulder_radius}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="${shoulder_radius}"/>
+			</geometry>
+		</collision> 
+	</link>
+	<gazebo reference="shoulderRight_link">
+	    <mu1>50.0</mu1>
+	    <mu2>50.0</mu2>
+	    <kp>1000000.0</kp>
+	    <kd>1.0</kd>
+	</gazebo>
+
+	<!--********Arm Joint******* -->
+
+	<!--Variables-->
+	<property name="arm_length" value="0.2286"/>
+	<property name="arm_radius" value="0.381"/>
+<!--
+	<link name="neck_link">
+		<inertial>
+			<mass value="0.5"/>
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+								iyy="1" iyz="0"
+								izz="1"/>
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.05" length="0.10"/>
+			</geometry>
+		</visual>	
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.05" length="0.10"/>
+			</geometry>
+		</collision>
+	</link>
+	<gazebo reference="neck_link">
+    <material>Gazebo/LightWood</material>
+    <mu1>50.0</mu1>
+    <mu2>50.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+	</gazebo>
+	<joint name="neck_twist_joint" type="continuous">
+		<parent link="trunk_link"/>
+		<origin xyz="0 0 1.0" rpy="0 0 3.14"/>
+    <axis xyz="0 0 1"/>
+		<child link="neck_link"/>
+	</joint>
+-->
+<!--
+	<link name="base_link"/>
+	<link name="torso_link"/>
+	<link name="upper_left_link"/>
+	<link name="upper_right_link"/>
+	<link name="fore_left_link"/>
+	<link name="fore_right_link"/>
+	<link name="head_link"/>
+	<link name="hand_left_link"/>
+	<link name="hand_right_link"/>
+	
+	<joint name="world_base" type="continuous">
+		<parent link="world"/>
+		<child link="base_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 0 0"/>
+	</joint>
+	
+	<joint name="base_torso" type="continuous">
+		<parent link="base_link"/>
+		<child link="torso_link"/>
+	</joint>
+	
+	<joint name="torso_head" type="continuous">
+		<parent link="torso_link"/>
+		<child link="head_link"/>
+	</joint>
+
+	<joint name="torso_rarm" type="continuous">
+		<parent link="torso_link"/>
+		<child link="upper_right_link"/>
+	</joint>
+	<joint name="torso_larm" type="continuous">
+		<parent link="torso_link"/>
+		<child link="upper_left_link"/>
+	</joint>
+
+	<joint name="urarm_frarm" type="continuous">
+		<parent link="upper_right_link"/>
+		<child link="fore_right_link"/>
+	</joint>
+	<joint name="ularm_flarm" type="continuous">
+		<parent link="upper_left_link"/>
+		<child link="fore_left_link"/>
+	</joint>
+	
+	<joint name="frarm_rhand" type="continuous">
+		<parent link="fore_right_link"/>
+		<child link="hand_right_link"/>
+	</joint>
+	<joint name="flarm_lhand" type="continuous">
+		<parent link="fore_left_link"/>
+		<child link="hand_left_link"/>
+	</joint>
+-->
+</robot>

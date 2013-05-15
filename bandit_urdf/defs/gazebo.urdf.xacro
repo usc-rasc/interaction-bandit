@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <gazebo>
+    <!-- PR2_ACTARRAY -->
+    <controller:gazebo_ros_controller_manager name="gazebo_ros_controller_manager" plugin="libgazebo_ros_controller_manager.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1000.0</updateRate>
+      <interface:audio name="gazebo_ros_controller_manager_dummy_iface" />
+    </controller:gazebo_ros_controller_manager>
+<!--    <controller:ros_time name="ros_time" plugin="libros_time.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1000.0</updateRate>
+      <interface:audio name="dummy_ros_time_iface_should_not_be_here"/>
+    </controller:ros_time>-->
+  </gazebo>
+
+</robot>

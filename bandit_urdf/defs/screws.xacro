@@ -1,0 +1,1024 @@
+<?xml version="1.0"?>
+
+<!-- XML namespaces -->
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<property name="M_PI" value="3.1415926535897931" />
+
+	<xacro:macro name="grid_screws" params="suffix reflect">
+
+	<link name="screw1_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw1_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.0844} -.083 .108" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw1_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw2_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw2_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.0844} -0.076 0.1006" rpy="${M_PI/2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw2_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw3_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw3_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.0844} -0.076 -0.09875" rpy="${M_PI/2} ${M_PI} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw3_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw4_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw4_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.0844} -.083 -.105" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw4_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw5_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw5_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.132} -.1101 .059" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw5_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw6_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw6_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.106} -.1101 .059" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw6_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw7_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw7_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.1067} -.1101 -.084" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw7_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw8_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw8_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.132} -.1101 -.084" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw8_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw9_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw9_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.026 0.087" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw9_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw10_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw10_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.044 0.087" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw10_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw11_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw11_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.044 -0.087" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw11_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw12_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw12_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.026 -0.087" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw12_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw13_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw13_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} -0.098 -0.082" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw13_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw14_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw14_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} -0.098 -0.065" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw14_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw15_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw15_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} -0.098 0.067" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw15_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw16_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw16_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} -0.098 0.083" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw16_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw17_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw17_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.059} -0.097 0.093" rpy="${M_PI/-2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw17_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw18_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw18_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.042} -0.097 -0.092" rpy="${M_PI/2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw18_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw19_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw19_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.06} -0.097 -0.092" rpy="${M_PI/2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw19_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw20_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw20_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.042} -0.097 0.093" rpy="${M_PI/-2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw20_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw21_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw21_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.042} 0.055 0.086" rpy="${M_PI} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw21_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw22_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw22_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.059} 0.056 -0.085" rpy="${M_PI} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw22_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw23_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw23_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.042} 0.056 -0.085" rpy="${M_PI} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw23_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw24_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw24_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.059} 0.055 0.085" rpy="${M_PI} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw24_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw25_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw25_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.059} 0.071 0.07" rpy="${M_PI/-2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw25_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw26_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw26_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.042} 0.071 0.07" rpy="${M_PI/-2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw26_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw27_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw27_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.042} 0.071 -0.069" rpy="${M_PI/2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw27_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw28_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw28_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.06} 0.071 -0.069" rpy="${M_PI/2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screw28_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw29_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw29_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.071 -0.060" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw29_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw30_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw30_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.071 -0.042" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw30_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw31_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw31_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.071 0.059" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw31_${suffix}_link"/>
+	</joint> 
+
+	<link name="screw32_${suffix}_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screw32_${suffix}_joint" type="fixed">
+		<origin xyz="${reflect*.069} 0.071 0.042" rpy="${M_PI/2} ${reflect*M_PI/-2} 0"/>
+		<parent link="8020_link"/>
+		<child link="screw32_${suffix}_link"/>
+	</joint> 
+	</xacro:macro>
+
+	<xacro:grid_screws suffix="left" reflect="1"/>
+	<xacro:grid_screws suffix="right" reflect="-1"/>
+
+	<link name="screwA_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screwA_joint" type="fixed">
+		<origin xyz="-0.0844 0.085 0.0345" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screwA_link"/>
+	</joint> 
+
+	<link name="screwB_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screwB_joint" type="fixed">
+		<origin xyz="-0.0844 0.0924 0.027" rpy="${M_PI/2} 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screwB_link"/>
+	</joint> 
+
+	<link name="screwC_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screwC_joint" type="fixed">
+		<origin xyz="0.0844 0.0924 -0.027" rpy="${M_PI/2} ${M_PI} 0"/>
+		<parent link="8020_link"/>
+		<child link="screwC_link"/>
+	</joint> 
+
+	<link name="screwD_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/screw.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="screwD_joint" type="fixed">
+		<origin xyz="0.0844 0.085 -0.0345" rpy="0 0 0"/>
+		<parent link="8020_link"/>
+		<child link="screwD_link"/>
+	</joint> 
+</robot>

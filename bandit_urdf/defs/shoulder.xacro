@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+
+<!-- XML namespaces -->
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <include filename="$(find bandit_urdf)/defs/common.xacro"/>
+    <property name="PI" value="3.14"/>
+    <property name="RCon" value="0.01744"/>
+
+    <property name="shoulder_mounting_link_z" value="0.081"/>
+    <property name="shoulder_link_z" value="0.160"/>
+    <property name="bicep_link_z" value="0.075"/>
+    <property name="forearm_link_z" value="-0.372"/>
+    <property name="hand_link_z" value="0.01"/>
+
+    <xacro:macro name="shoulder" params="side parent reflect *origin">
+
+        <joint name="${side}_torso_shoulder_mounting_joint" type="revolute">
+            <axis xyz="0 -1 0"/>
+            <insert_block name="origin"/>
+            <parent link="${parent}"/>
+            <child link="${side}_shoulder_mounting_link"/>
+            <limit lower="${-M_PI}"
+            upper="${M_PI}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${-M_PI}"
+            soft_upper_limit="${M_PI}"/>
+        </joint>
+
+        <link name="${side}_shoulder_mounting_link">
+            <inertial>
+                <origin xyz="-0.035 0.131 ${reflect*0.168}" rpy="${PI} 0 0"/>
+                <!--<origin xyz="-0.035 0.131 -0.168" rpy="${PI} 0 0"/>-->
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_shoulder_mounting_link_visual">
+                <origin xyz="0 0 0" rpy="${RCon*90} 0 ${RCon*90}"/>
+                <geometry name="${side}_shoulder_mounting_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/shoulder_cover_${side}_small.stl"/>
+                    <!--<box size="0.080 0.085 ${shoulder_mounting_link_z}"/>-->
+                </geometry>
+                <material name="Arms"/>
+            </visual>
+            <collision name="${side}_shoulder_mounting_link_collision">
+                <origin xyz="0 0 -0.05" rpy="${RCon*90} 0 ${RCon*90}"/>
+                <geometry name="${side}_shoulder_mounting_link_geom">
+                    <box size="0.105 0.175 ${shoulder_mounting_link_z}"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${side}_shoulder_mounting_shoulder_joint" type="revolute">
+            <origin xyz="0 ${reflect*0.00} 0"/>
+            <axis xyz="${reflect} 0 0"/>
+            <parent link="${side}_shoulder_mounting_link"/>
+            <child link="${side}_shoulder_link"/>
+            <limit lower="${-0.34906585}"
+            upper="${M_PI}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${-0.34906585}"
+            soft_upper_limit="${M_PI}"/>
+        </joint>
+
+        <link name="${side}_shoulder_link">
+            <inertial>
+                <origin xyz="-0.030 -0. -0" rpy="0 ${RCon*180} 0"/>
+                <!--<origin xyz="-0.030 -0.160 -0" rpy="0 ${RCon*180} 0"/>-->
+
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_shoulder_link_visual">
+                <origin xyz="0 ${-reflect*0.0} 0" rpy="0 ${M_PI/2} 0"/>
+                <geometry name="${side}_shoulder_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/bicep_cover_${side}_small.stl"/>
+                </geometry>
+                <material name="Arms"/>
+            </visual>
+            <collision name="${side}_shoulder_link_collision">
+                <origin xyz="0 0 -0.04" rpy="0 0 0"/>
+                <geometry name="${side}_shoulder_link_geom">
+                    <box size="0 0 0"/>
+                </geometry>
+            </collision>
+        </link>
+        <!-- -->
+        <joint name="${side}_shoulder_bicep_joint" type="revolute">
+            <origin xyz="0 0 ${-.161}"/>
+            <axis xyz="0 0 ${reflect}"/>
+            <parent link="${side}_shoulder_link"/>
+            <child link="${side}_bicep_link"/>
+            <limit lower="${-1.57079633}"
+            upper="${1.57079633}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${-1.57079633}"
+            soft_upper_limit="${1.57079633}"/>
+        </joint>
+
+        <link name="${side}_bicep_link">
+            <inertial>
+                <origin xyz="-0.0 0.0 -0.288" rpy="0 0 ${RCon*90}"/>
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_bicep_link_visual">
+                <origin xyz="0 0 0.0" rpy="0 ${-M_PI/2} ${M_PI/2}"/>
+                <geometry name="${side}_bicep_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/elbow_cover_${side}_small.stl"/>
+                    <!--<box size="0.050 0.050 0.065"/>-->
+                </geometry>
+                <material name="Arms"/>
+            </visual>
+            <collision name="${side}_bicep_link_collision">
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry name="${side}_bicep_link_geom">
+                    <box size="0 0 0"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${side}_bicep_forearm_joint" type="revolute">
+            <origin xyz="0 0 0"/>
+            <axis xyz="0 ${-1} 0"/>
+            <parent link="${side}_bicep_link"/>
+            <child link="${side}_forearm_link"/>
+            <limit lower="${0}"
+            upper="${1.91986218}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${0}"
+            soft_upper_limit="${1.91986218}"/>
+        </joint>
+
+        <link name="${side}_forearm_link">
+            <inertial>
+                <origin xyz="-0.028 0.163 -0.372" rpy="0 ${RCon*180} ${RCon*180}"/>
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_forearm_link_visual">
+                <origin xyz="0 0 0" rpy="0 ${M_PI/2} ${M_PI/2}"/>
+                <!--<origin xyz="0 0 -0.025" rpy="0 ${M_PI/2} ${M_PI/2}"/>-->
+                <geometry name="${side}_forearm_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/forearm_cover_${side}_small.stl"/>
+                    <!--<box size="0.068 0.065 0.095"/>-->
+                </geometry>
+                <material name="Arms"/>
+            </visual>
+            <collision name="${side}_forearm_link_collision">
+                <origin xyz="0 0 -0.075" rpy="0 0 0"/>
+                <geometry name="${side}_forearm_link_geom">
+                    <box size="0 0 0"/>
+                </geometry>
+            </collision>
+        </link>
+        <!-- -->
+        <joint name="${side}_forearm_wrist_joint" type="revolute">
+            <origin xyz="0 0 -0.145" rpy="0 0 ${-reflect * M_PI/2}"/>
+            <!--<origin xyz="0 0 -0.090"/>-->
+            <axis xyz="0 0 ${reflect}"/>
+            <parent link="${side}_forearm_link"/>
+            <child link="${side}_wrist_link"/>
+            <limit lower="${-M_PI/2.0}"
+            upper="${M_PI/2.0}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${-M_PI/2.0}"
+            soft_upper_limit="${M_PI/2.0}"/>
+        </joint>
+
+        <link name="${side}_wrist_link">
+            <inertial>
+                <origin xyz="-0.026 0.163 -0.434" rpy="0 0 0"/>
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_wrist_link_visual">
+                <origin xyz="0 0 -0.01" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+                <geometry name="${side}_wrist_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/wrist_cover_${side}_small.stl"/>
+                    <!--<box size="0.054 0.054 0.055"/>-->
+                </geometry>
+                <material name="Wrist"/>
+            </visual>
+            <collision name="">
+                <origin xyz="0 0 -0.01" rpy="0 0 0"/>
+                <geometry name="${side}_wrist_link_geom">
+                    <box size="0 0 0"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${side}_wrist_hand_joint" type="revolute">
+            <origin xyz="0 0 -0.01"/>
+            <!--<origin xyz="0 0 -0.025"/>-->
+            <axis xyz="0 -1 0"/>
+            <parent link="${side}_wrist_link"/>
+            <child link="${side}_hand_link"/>
+            <limit lower="${-M_PI/2.0}"
+            upper="${M_PI/2.0}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${-M_PI/2.0}"
+            soft_upper_limit="${M_PI/2.0}"/>
+        </joint>
+
+        <link name="${side}_hand_link">
+            <inertial>
+                <origin xyz="-0.015 0.163 -0.486" rpy="${RCon*57} 0 ${RCon*90}"/>
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_hand_link_visual">
+                <origin xyz="0 0 -.00" rpy="${M_PI/2} 0 0"/>
+                <geometry name="${side}_hand_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/${side}_hand_small.stl"/>
+
+                    <!--<box size="0.060 0.060 0.080"/>-->
+                </geometry>
+                <material name="Hands"/>
+            </visual>
+            <collision name="${side}_hand_link_collision">
+                <origin xyz="-0.05 0 -0.06" rpy="0 0 0"/>
+                <geometry name="${side}_hand_link_geom">
+                    <box size="0.03 0.06 0.080"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${side}_hand_thumb_joint" type="revolute">
+            <origin xyz="0.014 0 -.033"/>
+            <axis xyz="0 1 0"/>
+            <parent link="${side}_hand_link"/>
+            <child link="${side}_thumb_link"/>
+            <limit lower="${reflect*M_PI/4-1.5}"
+            upper="0" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${reflect*M_PI/4-1.5+0.15}"
+            soft_upper_limit="${0-0.15}"/>
+        </joint>
+
+        <link name="${side}_thumb_link">
+            <inertial>
+                <origin xyz="0.037 0.163 -0.484" rpy="${RCon*90} 0 ${RCon*90}"/>
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="${side}_thumb_link_visual">
+                <origin xyz="0 0 0" rpy="${M_PI/2} ${-M_PI/2} 0"/>
+                <geometry name="${side}_thumb_link_geom">
+                    <mesh filename="package://bandit_urdf/meshes/bandit_mesh/${side}_thumb_small.stl"/>
+                    <!--<box size="0.030 0.025 0.06"/>-->
+                </geometry>
+                <material name="Hands"/>
+            </visual>
+            <collision name="${side}_thumb_link_collision">
+                <origin xyz="0 0 -.015" rpy="0 0 0"/>
+                <geometry name="${side}_thumb_link_geom">
+                    <box size="0.030 0.025 0.06"/>
+                </geometry>
+            </collision>
+        </link>
+        <!--
+        <joint name="" type="revolute">
+            <origin xyz=""/>
+            <axis xyz=""/>
+            <parent link=""/>
+            <child link=""/>
+            <limit lower="${reflect*M_PI/4-1.5}"
+            upper="${reflect*M_PI/4+1.5}" effort="30" velocity="6"/>
+            <dynamics damping="1.0"/>
+            <calibration reference_position="0.0"/>
+            <safety_controller k_position="100" k_velocity="10"
+            soft_lower_limit="${reflect*M_PI/4-1.5+0.15}"
+            soft_upper_limit="${reflect*M_PI/4+1.5-0.15}"/>
+        </joint>
+
+        <link name="">
+            <inertial>
+                <origin xyz="" rpy=""/>
+                <mass value="0"/>
+                <inertia ixx="0.866179142480" ixy="-0.06086507933"
+                ixz="-0.12118061183" iyy="0.87421714893"
+                iyz="-0.05886609911" izz="0.27353821674"/>
+            </inertial>
+            <visual name="$">
+                <origin xyz="0 0 0" rpy="${RCon*90} 0 ${RCon*90}"/>
+                <geometry name="">
+                    <box size=""/>
+                </geometry>
+                <material name=""/>
+            </visual>
+            <collision name="">
+                <origin xyz="0 0 0" rpy=""/>
+                <geometry name="">
+                    <box size=""/>
+                </geometry>
+            </collision>
+        </link>
+        -->
+    </xacro:macro>
+</robot>

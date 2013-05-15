@@ -1,0 +1,12 @@
+<package>
+  <description>URDF file descriptions for USC hardware</description>
+  <author>David Feil-Seifer</author>
+  <license>BSD</license>
+  <review status="experimental" notes=""/>
+  <depend package="urdf" />
+  <!--<depend package="gazebo_tools"/>-->
+  <depend package="xacro" />
+  <depend package="rviz"/>
+	<depend package="robot_state_publisher"/>
+  <url></url>
+</package>

@@ -1,0 +1,12 @@
+head_controller:
+  type: HeadPositionController
+  pan_link_name: bandit_head_pan_link
+  pan_controller:
+    type: JointPositionController
+    joint: bandit_head_pan_joint
+    pid:
+      p: 10.0
+      i: 12.0
+      d: 0.5
+      i_clamp: 0.5
+
