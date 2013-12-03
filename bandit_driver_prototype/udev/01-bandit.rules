@@ -1,0 +1,1 @@
+ATTR{idVendor}=="067b", ATTR{idProduct}=="2303", ATTR{manufacturer}=="Prolific Technology Inc. ", ATTR{product}=="USB-Serial Controller D", SYMLINK+="bandit/serial", MODE="0777"
