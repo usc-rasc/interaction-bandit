@@ -19,7 +19,7 @@
 #define SMARTSERVO_EXCEPT(except, msg, ...) \
   { \
     char buf[256]; \
-    snprintf(buf, 256, "%s::%s: " msg, __CLASS__, __FUNCTION__,##__VA_ARGS__); \
+    snprintf(buf, 256, "%s : %d - %s::%s: " msg, __FILE__, __LINE__, __CLASS__, __FUNCTION__,##__VA_ARGS__); \
     throw except(buf); \
   }
 
@@ -27,7 +27,7 @@
   if (fd_ < 0) \
   { \
     char buf[256]; \
-    snprintf(buf, 256, "%s::%s: Port has not been opened yet", __CLASS__, __FUNCTION__); \
+    snprintf(buf, 256, "%s : %d - %s::%s: Port has not been opened yet", __FILE__, __LINE__, __CLASS__, __FUNCTION__); \
     throw SmartServoException(buf); \
   }
 
