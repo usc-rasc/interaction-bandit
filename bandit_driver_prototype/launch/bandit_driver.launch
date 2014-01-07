@@ -3,6 +3,10 @@
     <arg name="urdf_filename" default="$(find bandit_urdf)/urdf/bandit_defs.urdf"/>
     <arg name="use_joint_limits" default="false" />
 
+	<arg name="debug" default="false" />
+	<arg if="$(arg debug)" name="launch-prefix" value="gdb -ex run --args" />
+	<arg unless="$(arg debug)" name="launch-prefix" value="" />
+
     <arg name="pkg" value="bandit_driver_prototype" />
     <arg name="name" default="bandit_driver" />
     <arg name="type" default="$(arg name)_node" />
@@ -23,9 +27,9 @@
         output="screen" />
     <node
         unless="$(arg nodelet)"
+		launch-prefix="$(arg launch-prefix)"
         pkg="$(arg pkg)"
         type="$(arg type)"
         name="$(arg name)"
-        args="$(arg args)"
-        output="screen" />
+        args="$(arg args)" />
 </launch>
