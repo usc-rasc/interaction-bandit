@@ -15,7 +15,7 @@ namespace bandit
 // =============================================================================================================================================
 Joint::Joint
 (
-    JointName && name_,
+    JointName const & name_,
     int16_t const & mod_id_,
     smartservo::WhichJoint const & which_,
     smartservo::JointType const & type_,
@@ -245,7 +245,7 @@ void Bandit::closePort()
 }
 
 // =============================================================================================================================================
-void Bandit::registerStateCB( Bandit::_StateCallback && callback )
+void Bandit::registerStateCB( Bandit::_StateCallback const & callback )
 {
     master_.registerStateCB( callback );
 }

@@ -97,7 +97,7 @@ public:
 
     Joint
     (
-        JointName && name = JointName(),
+        JointName const & name = JointName(),
         int16_t const & mod_id_ = -1,
         smartservo::WhichJoint const & which_ = smartservo::NO_JOINT,
         smartservo::JointType const & type_ = smartservo::NO_JOINT_TYPE,
@@ -224,7 +224,7 @@ public:
     void closePort();
 
     //! Callback which will be triggered whenever a state update is received
-    void registerStateCB( _StateCallback && callback );
+    void registerStateCB( _StateCallback const & callback );
 
     //! Process a single pending incoming message
     /*!
