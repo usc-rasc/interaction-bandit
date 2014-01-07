@@ -228,6 +228,14 @@ QUICKDEV_DECLARE_NODE_CLASS( BanditDriver )
         {
             PRINT_ERROR( "%s", ex.what() );
         }
+        catch( smartservo::SmartServoException const & ex )
+        {
+            PRINT_ERROR( "%s", ex.what() );
+        }
+        catch( ... )
+        {
+            PRINT_ERROR( "Unknown exception" );
+        }
     }
 
     void banditStateCB()
@@ -290,7 +298,7 @@ QUICKDEV_DECLARE_NODE_CLASS( BanditDriver )
 
         bandit_state_pub_ptr_->publishTransforms( joint_states_map, now );
 
-#if QUICKDEV_ROS_VERSION >= ROS_VERSION_ELECTRIC        
+#if QUICKDEV_ROS_VERSION >= ROS_VERSION_ELECTRIC
 
         bandit_state_pub_ptr_->publishFixedTransforms();
 
