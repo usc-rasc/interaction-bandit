@@ -7,33 +7,37 @@
 
 
     <include filename="$(find bandit_urdf)/defs/common.xacro"/>
-  <!-- uncomment the below line for the bandit_shirt materials -->
-  <!--  <include filename="$(find bandit_urdf)/defs/shirt_materials.xacro"/>-->
-
-  <!-- use the below line for the regular bandit materials -->
+    
+    
+  	<!-- uncomment the below line for the bandit_shirt materials -->
+  	<!--  <include filename="$(find bandit_urdf)/defs/shirt_materials.xacro"/>-->
+  	<!-- use the below line for the regular bandit materials -->
     <include filename="$(find bandit_urdf)/defs/materials.xacro"/>
     <include filename="$(find bandit_urdf)/defs/torso.xacro"/>
     <include filename="$(find bandit_urdf)/defs/head.xacro"/>
     <include filename="$(find bandit_urdf)/defs/shoulder.xacro"/>
-    <include filename="$(find bandit_urdf)/urdf/gazebo.urdf.xacro"/>
-
+    
+    
+    <!-- use the below line for gazebo includes -->
+    <!--<include filename="$(find bandit_urdf)/urdf/gazebo.urdf.xacro"/>-->
+    
+    <!-- use the below line for pr2 includes -->
     <!--<xacro:pr2_base_v0 name="base"/>-->
+
 
     <xacro:torso name="torso" parent="/robot/base_link">
         <origin xyz="-0.00 0 ${body_height/2}" rpy="0 0 0"/>
     </xacro:torso>
-
-    <xacro:head name="head" parent="torso_link">
-            <origin xyz="0 0 ${body_height/2 +neck_height/2+0.01}" rpy="0 0 0"/>
-        <!--<origin xyz="0 0 ${body_height/2+neck_height/2+0.01}" rpy="0 0 0"/>-->
+	
+	<xacro:head name="head" parent="torso_link">
+        <origin xyz="0 0 ${body_height/2+neck_height/2+0.01}" rpy="0 0 0"/>
     </xacro:head>
-
-    <xacro:shoulder side="left" parent="torso_link" reflect="1">
+	
+	<xacro:shoulder side="left" parent="torso_link" reflect="1">
         <origin xyz="0 ${body_width/2+.01} 0" rpy="0 0 0"/>
-        <!--<origin xyz="0 ${body_width/2+.01} ${body_height*3/8}" rpy="0 0 0"/>-->
     </xacro:shoulder>
 
-    <xacro:shoulder side="right" parent="torso_link" reflect="-1">
+	<xacro:shoulder side="right" parent="torso_link" reflect="-1">
         <origin xyz="0 ${-(body_width/2+.01)} 0" rpy="0 0 0"/>
     </xacro:shoulder>
 
