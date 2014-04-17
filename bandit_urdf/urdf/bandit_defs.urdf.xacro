@@ -23,7 +23,8 @@
     
     <!-- use the below line for pr2 includes -->
     <!--<xacro:pr2_base_v0 name="base"/>-->
-
+    
+	
 
     <xacro:torso name="torso" parent="/robot/base_link">
         <origin xyz="-0.00 0 ${body_height/2}" rpy="0 0 0"/>

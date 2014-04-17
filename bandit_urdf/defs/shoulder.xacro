@@ -5,8 +5,8 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-	<!-- path to mesh files -->
-	<property name="mesh_path" value="package://bandit_urdf/meshes/bandit_mesh/"/>
+	<!-- use the below line to specify path to meshes and materials -->
+	<property name="mesh_path" value="package://bandit_urdf/meshes/bandit_mesh"/>
 
 
 	<!-- other properties --> 

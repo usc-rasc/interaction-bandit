@@ -27,6 +27,10 @@
 	<!--xacro:bandit_head name="bandit_head" parent="bandit_torso_link">
 		<origin xyz="0 0 ${body_height/2 + neck_height/2+0.01}" rpy="0 0 0"/>
 	</xacro:bandit_head-->
+	
+		<!--xacro:bandit_head name="bandit_head" parent="bandit_torso_link">
+		<origin xyz="0 0 ${body_height/2 + neck_height/2+0.01}" rpy="0 0 0"/>
+	</xacro:bandit_head-->
 
 	<xacro:bandit_shoulder side="left" parent="bandit_torso_link" reflect="1">
 		<origin xyz="0 ${body_width/2+.01} 0" rpy="0 0 0"/>
