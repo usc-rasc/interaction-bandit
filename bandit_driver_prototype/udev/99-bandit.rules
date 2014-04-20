@@ -9,3 +9,9 @@ SUBSYSTEM=="tty",SUBSYSTEMS=="usb-serial",MODE="0666",SYMLINK+="bandit/usb-seria
 
 # any PnP serial adapter
 SUBSYSTEM=="tty",SUBSYSTEMS=="pnp",MODE="0666",SYMLINK+="bandit/serial"
+
+# Atmel AVR ISP MkII
+SUBSYSTEM=="usb",ATTRS{idVendor}=="03eb",ATTRS{idProduct}=="2104",MODE="0666",SYMLINK+="bandit/avrispmk2-programmer"
+
+# Atmel AVR Dragon
+SUBSYSTEM=="usb",ATTRS{idVendor}=="03eb",ATTRS{idProduct}=="2107",MODE="0666",SYMLINK+="bandit/avrdragon-programmer"
