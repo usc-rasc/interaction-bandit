@@ -12,7 +12,7 @@
 
 	<link name="screw1_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -40,7 +40,7 @@
 
 	<link name="screw2_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -68,7 +68,7 @@
 
 	<link name="screw3_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -96,7 +96,7 @@
 
 	<link name="screw4_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -124,7 +124,7 @@
 
 	<link name="screw5_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -152,7 +152,7 @@
 
 	<link name="screw6_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -180,7 +180,7 @@
 
 	<link name="screw7_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -208,7 +208,7 @@
 
 	<link name="screw8_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -236,7 +236,7 @@
 
 	<link name="screw9_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -264,7 +264,7 @@
 
 	<link name="screw10_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -292,7 +292,7 @@
 
 	<link name="screw11_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -320,7 +320,7 @@
 
 	<link name="screw12_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -348,7 +348,7 @@
 
 	<link name="screw13_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -376,7 +376,7 @@
 
 	<link name="screw14_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -404,7 +404,7 @@
 
 	<link name="screw15_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -432,7 +432,7 @@
 
 	<link name="screw16_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -460,7 +460,7 @@
 
 	<link name="screw17_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -488,7 +488,7 @@
 
 	<link name="screw18_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -544,7 +544,7 @@
 
 	<link name="screw20_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -572,7 +572,7 @@
 
 	<link name="screw21_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -600,7 +600,7 @@
 
 	<link name="screw22_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -628,7 +628,7 @@
 
 	<link name="screw23_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -656,7 +656,7 @@
 
 	<link name="screw24_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -684,7 +684,7 @@
 
 	<link name="screw25_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -712,7 +712,7 @@
 
 	<link name="screw26_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -740,7 +740,7 @@
 
 	<link name="screw27_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -768,7 +768,7 @@
 
 	<link name="screw28_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -796,7 +796,7 @@
 
 	<link name="screw29_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -824,7 +824,7 @@
 
 	<link name="screw30_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -852,7 +852,7 @@
 
 	<link name="screw31_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -880,7 +880,7 @@
 
 	<link name="screw32_${suffix}_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -912,7 +912,7 @@
 
 	<link name="screwA_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -940,7 +940,7 @@
 
 	<link name="screwB_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -968,7 +968,7 @@
 
 	<link name="screwC_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>
@@ -996,7 +996,7 @@
 
 	<link name="screwD_link">
 		<inertial>
-			<mass value="0"/>	
+			<mass value="0.01"/>	
 			<origin xyz="0 0 0"/>
 			<inertia ixx="1" ixy="0" ixz="0"
 				 iyy="1" iyz="0" izz="1"/>

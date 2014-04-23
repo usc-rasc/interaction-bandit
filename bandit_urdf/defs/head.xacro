@@ -34,7 +34,7 @@
     	<link name="head_pan_link">
       		<inertial>
       			<origin xyz="-0.05 0 -0.101" rpy="183.928 0 -90"/>
-        		<mass value="0"/>
+        		<mass value="0.01"/>
         		<inertia ixx="0.00482611007"  ixy="-0.000144683999"  
         				ixz="0.000110076136" iyy="0.005218991412"  
         				iyz="-0.000314239509"  izz="0.008618784925" />
@@ -72,7 +72,7 @@
     	<!-- head_tilt_link -->
     	<link name="head_tilt_link">
       		<inertial>
-        		<mass value="0" />
+        		<mass value="0.01" />
         		<origin xyz="0 0 0" rpy="${RCon*90} 0 ${RCon*90}"/>
         		<inertia ixx="0.00482611007"  ixy="-0.000144683999"  ixz="0.000110076136"
               	   iyy="0.005218991412"  iyz="-0.000314239509"  izz="0.008618784925"/>
@@ -110,7 +110,7 @@
       	<!-- mouth_top_link -->
     	<link name="mouth_top_link">
       		<inertial>
-        		<mass value="0" />
+        		<mass value="0.01" />
         		<origin xyz="0 0 0" rpy="0 0 ${RCon*90}"/>
         		<inertia ixx="0.00482611007"  ixy="-0.000144683999"  
         				ixz="0.000110076136" iyy="0.005218991412"  
@@ -150,7 +150,7 @@
 	  	<!-- mouth_bottom_link -->
 		<link name="mouth_bottom_link">
 	  		<inertial>
-	    		<mass value="0" />
+	    		<mass value="0.01" />
 	    		<origin xyz="0 0 0" rpy="${RCon*90} 0 ${RCon*90}"/>
 	    		<inertia ixx="0.00482611007"  ixy="-0.000144683999"  
 	    				ixz="0.000110076136" iyy="0.005218991412"  
@@ -225,7 +225,7 @@
 		<!-- eye_{side}_camera_link -->
 		<link name="${name}_link">
   			<inertial>
-    			<mass value="0" />
+    			<mass value="0.01" />
     			<origin xyz="0 0 0" rpy="${RCon*90} 0 ${RCon*90}"/>
     			<inertia ixx="0.00482611007"  ixy="-0.000144683999"  
     						ixz="0.000110076136" iyy="0.005218991412"  
@@ -271,7 +271,7 @@
     	<!-- eyebrow_link -->
     	<link name="${name}_link">
       		<inertial>
-        		<mass value="0" />
+        		<mass value="0.01" />
         		<origin xyz="0 0 0" rpy="${RCon*90} 0 ${RCon*90}"/>
         		<inertia ixx="0.00482611007"  ixy="-0.000144683999"  
         				ixz="0.000110076136" iyy="0.005218991412"  
@@ -309,7 +309,7 @@
 		<!-- pupil_{side}_link -->
 		<link name="pupil_${suffix}_link">
     		<inertial>
-        		<mass value="0"/>
+        		<mass value="0.01"/>
         		<origin xyz="0 0 0"/>
         		<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
     		</inertial>

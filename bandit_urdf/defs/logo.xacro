@@ -15,7 +15,7 @@
 	<link name="bandit_logo">
 		<inertial>
 			<origin xyz="0 0.15 0" rpy="${RCon*90} 0 ${RCon*90}"/>
-			<mass value="0"/>
+			<mass value="0.01"/>
 			<inertia ixx="0.866179142480" ixy="-0.06086507933"
 			ixz="-0.12118061183" iyy="0.87421714893"  
 			iyz="-0.05886609911" izz="0.27353821674"/>
