@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot>
+    <gazebo reference="torso_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="stop_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="head_pan_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="head_tilt_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="head_left_brow_link">
+      <material>
+        <color rgba="0.35 0.35 0.35 1.0"/>
+      </material>
+    </gazebo>
+    <gazebo reference="head_right_brow_link">
+      <material>
+        <color rgba="0.35 0.35 0.35 1.0"/>
+      </material>
+    </gazebo>
+
+    <transmission type="SimpleTransmission" name="head_pan_trans">
+        <actuator name="$head_pan_motor" />
+        <joint name="head_pan_joint" />
+        <mechanicalReduction>1.0</mechanicalReduction>
+    </transmission>
+
+    <transmission type="SimpleTransmission" name="head_tilt_trans">
+      <actuator name="$head_tilt_motor" />
+      <joint name="head_tilt_joint" />
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </transmission>
+</robot>

@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://ros.org/wiki/xacro">
-
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<!-- use the below line to specify path to meshes and materials -->
 	<property name="mesh_path" value="package://bandit_urdf/meshes/bandit_mesh"/>
@@ -80,7 +76,7 @@
       		<visual name="head_tilt_visual">
         		<origin xyz="-.02 0 .01" rpy="${RCon*90} 0 ${RCon*90}"/>
         		<geometry name="head_tilt_visual_geom">
-        			<mesh filename="${mesh_path}/head_smallest.stl"/>
+        			<mesh filename="${mesh_path}/head_small.stl"/>
         		</geometry>
         		<material name="Head"/>
       		</visual>
@@ -95,6 +91,7 @@
         
     	<!-- mouth_top_joint -->
       	<joint name="mouth_top_joint" type="revolute">
+            <origin xyz="0.07 0 -0.01" rpy="0 0 0"/>
         	<axis xyz="0 -1 0" />
         	<limit lower="-0.261799388" upper="0.261799388" effort="2.645" velocity="6" />
             <safety_controller k_velocity="1.5" soft_lower_limit="${-1.57079633+0.15}" 			
@@ -135,6 +132,7 @@
 		<!-- start mouth xacro definition -->
 		<!-- mouth_bottom_joint -->
 	  	<joint name="mouth_bottom_joint" type="revolute">
+            <origin xyz="0.07 0 -0.01" rpy="0 0 0"/>
 	    	<axis xyz="0 -1 0"/>
 	    	<limit lower="-0.261799388" upper="0.261799388" effort="2.645" velocity="6" />
 	        <safety_controller k_velocity="1.5" soft_lower_limit="${-1.57079633+0.15}" 
