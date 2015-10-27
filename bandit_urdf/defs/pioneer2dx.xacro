@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       name="pioneer2dx">
+
+
+ 
+  <include filename="$(find bandit_urdf)/defs/common.xacro"/>
+  <!--<include filename="$(find pr2_description)/urdf/common.xacro"/>-->
+  <include filename="$(find bandit_urdf)/defs/materials.xacro"/>
+
+ <xacro:macro name="pioneer2dx" params="name">
+    <link name="base_link">
+      <inertial>
+        <mass value="2.0"/>
+        <origin xyz="0 0 0"/> 
+        <inertia ixx="5.652232699207" ixy="-0.009719934438" ixz="1.293988226423"
+                 iyy="5.669473158652" iyz="-0.007379583694" izz="3.683196351726" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <!--<mesh filename="package://bandit_urdf/meshes/chassis.mesh"/>-->
+          <box size="0.445 0.277 0.17"/>
+        </geometry>
+        <material name="Red"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.445 0.277 0.17"/>
+        </geometry>
+      </collision>
+    </link>
+
+		<link name="lid_link">
+
+		</link>
+  </xacro:macro>
+
+  <xacro:pioneer2dx name="p2os"/>
+
+</robot>

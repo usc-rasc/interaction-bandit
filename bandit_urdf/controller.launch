@@ -1,0 +1,13 @@
+<launch>
+	<!--
+	<rosparam command="load" file="$(find bandit_urdf)/controller/head_position_controller.yaml"/>
+	-->
+
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
+    <remap from="joint_state" to="joint_state"/>
+    <param name="publish_frequency" type="double" value="15.0"/>
+    <param name="tf_prefix" type="string" value=""/>
+  </node>
+
+
+</launch>

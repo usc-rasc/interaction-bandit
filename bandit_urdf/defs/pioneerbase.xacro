@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+
+<!-- XML namespaces -->
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<property name="M_PI" value="3.1415926535897931" />
+
+<!-- 80/20's -->
+	<link name="8020_link">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0"
+ 				izz="1"/>
+		</inertial>
+		<visual name="8020_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="8020_geom">
+				<mesh filename="package://bandit_urdf/meshes/bandit_mesh/grid1.stl"/>
+			</geometry>
+			<material name="Silver">
+					<color rgba="0.65 0.65 0.65 1.0"/>
+			</material>
+<!-- 					<material name="GridTexture">
+					<texture filename="package://bandit_urdf/meshes/bandit_mesh/metal1.jpg"/>
+					</material> -->
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+	
+	<joint name="8020_joint" type="fixed">
+		<origin xyz="0 0 -0.35" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+		<parent link="bandit_torso_link"/>
+		<child link="8020_link"/>
+	</joint>
+
+<!-- Pioneer3dx -->
+	<!-- Chassis -->
+	<link name="chassis_link">
+		<inertial>
+			<mass value="3.5"/>
+			<!--<origin xyz="-0.025 0 -0.223"/>-->
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0"
+				 izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="-0.045 0 0.148" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/chassis.stl"/>
+			</geometry>
+			<material name="ChassisRed">
+				<color rgba="0.851 0.0 0.0 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+		</collision>
+	</link>
+
+	<joint name="chassis_joint" type="fixed">
+		<origin xyz="0 -0.351 0" rpy="0 ${M_PI/-2} ${M_PI/-2}"/>
+		<parent link="8020_link"/>
+		<child link="chassis_link"/>
+	</joint>
+
+	<!-- Top -->
+	<link name="top_plate">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0"
+ 				izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/top.stl"/>
+			</geometry>
+			<material name="TopBlack">
+					<color rgba="0.038 0.038 0.038 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+	
+	<joint name="base_top_joint" type="fixed">
+		<origin xyz="-0.045 0 0.234" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="top_plate"/>
+	</joint>
+
+
+	<!-- Swivel -->
+	<link name="swivel">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+  	 	</inertial>
+	<visual name="base_visual">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry name="pioneer_geom">
+			<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/swivel.stl"/>
+		</geometry>
+		<material name="swivel">
+			<color rgba="0.5 0.5 0.5 1"/>
+		</material>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0 0 0"/>
+		</geometry>
+	</collision>
+	</link>
+
+ 	<joint name="base_swivel_joint" type="fixed">
+		<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="swivel"/>
+	</joint>
+
+	<!-- Center Wheel + Hubcap -->
+	<link name="center_hubcap">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+  	 	</inertial>
+	<visual name="base_visual">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry name="pioneer_geom">
+			<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/center_hubcap.stl"/>
+		</geometry>
+		<material name="swivel">
+			<color rgba="0.5 0.5 0.5 1"/>
+		</material>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0 0 0"/>
+		</geometry>
+	</collision>
+	</link>
+	
+	<joint name="swivel_hubcap_joint" type="fixed">
+		<origin xyz="-0.026 0 -0.016" rpy="0 0 0"/>
+		<parent link="swivel"/>
+		<child link="center_hubcap"/>
+	</joint>
+
+	<link name="center_wheel">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+  	 	</inertial>
+	<visual name="base_visual">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry name="pioneer_geom">
+			<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/center_wheel.stl"/>
+		</geometry>
+		<material name="WheelBlack">
+			<color rgba="0.117 0.117 0.117 1"/>
+		</material>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0 0 0"/>
+		</geometry>
+	</collision>
+	</link>
+
+	<joint name="center_wheel_joint" type="fixed">
+		<origin xyz="-0.0035 0 -0.001" rpy="0 0 0"/>
+		<parent link="center_hubcap"/>
+		<child link="center_wheel"/>
+	</joint>
+
+	<!-- Right/Left Hubcap + Wheel -->
+	<xacro:macro name="p3dx_wheel" params="suffix parent reflect">
+	<link name="p3dx_${suffix}_wheel">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+  	 	</inertial>
+	<visual name="base_visual">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry name="pioneer_geom">
+			<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/${suffix}_wheel.stl"/>
+		</geometry>
+<!--		<material name="WheelBlack">
+			<color rgba="0.117 0.117 0.117 1"/>
+		</material>-->
+		<material name="TireTexture">
+			<texture filename="package://bandit_urdf/meshes/bandit_mesh/gradients/tire1.jpg"/>
+		</material>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0 0 0"/>
+		</geometry>
+	</collision>
+	</link>
+
+	<joint name="base_${suffix}_wheel_joint" type="fixed">
+		<origin xyz="0 ${reflect*0.158} 0.091" rpy="0 0 0"/>
+		<parent link="${parent}"/>
+		<child link="p3dx_${suffix}_wheel"/>
+	</joint>
+
+	<link name="p3dx_${suffix}_hubcap">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+  	 	</inertial>
+	<visual name="base_visual">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry name="pioneer_geom">
+			<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/${suffix}_hubcap.stl"/>
+		</geometry>
+		<material name="HubcapYellow">
+			<color rgba="1.0 0.811 0.151 1.0"/>
+		</material>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0 0 0"/>
+		</geometry>
+	</collision>
+	</link>
+
+	<joint name="base_${suffix}_hubcap_joint" type="fixed">
+		<origin xyz="0 ${reflect*0.158} 0.091" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="p3dx_${suffix}_hubcap"/>
+	</joint>
+
+	</xacro:macro>
+
+	<xacro:p3dx_wheel suffix="left" parent="chassis_link" reflect="1"/>
+	<xacro:p3dx_wheel suffix="right" parent="chassis_link" reflect="-1"/>
+
+	<!-- Front + Back Sonar -->
+	<link name="front_sonar">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/front_sonar.stl"/>
+			</geometry>
+			<material name="SonarYellow">
+				<color rgba="0.715 0.583 0.210 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_front_joint" type="fixed">
+		<origin xyz="-0.198 0 0.208" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="front_sonar"/>
+	</joint>
+
+	<link name="front_sonar_rim">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/front_rim.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_front_rim_joint" type="fixed">
+		<origin xyz="-0.198 0 0.208" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="front_sonar_rim"/>
+	</joint>
+
+	<link name="back_sonar">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/back_sonar.stl"/>
+			</geometry>
+			<material name="SonarYellow">
+				<color rgba="0.715 0.583 0.210 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_back_joint" type="fixed">
+		<origin xyz="0.109 0 0.209" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="back_sonar"/>
+	</joint>
+
+	<link name="back_sonar_rim">
+		<inertial>
+			<mass value="0"/>	
+			<origin xyz="0 0 0"/>
+			<inertia ixx="1" ixy="0" ixz="0"
+				 iyy="1" iyz="0" izz="1"/>
+		</inertial>
+		<visual name="base_visual">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry name="pioneer_geom">
+				<mesh filename="package://p2os_urdf/meshes/p3dx_meshes/back_rim.stl"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_back_rim_joint" type="fixed">
+		<origin xyz="0.109 0 0.209" rpy="0 0 0"/>
+		<parent link="chassis_link"/>
+		<child link="back_sonar_rim"/>
+	</joint>
+
+
+
+</robot>
