@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot name="bandit" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <include filename="$(find bandit_urdf)/defs/common.xacro"/>
+    
+  <!-- Import Rviz colors -->
+    <xacro:include filename="$(find bandit_urdf)/defs/materials.xacro" />
+
+    <xacro:include filename="$(find bandit_urdf)/defs/torso.xacro"/>
+    <xacro:include filename="$(find bandit_urdf)/defs/head.xacro"/>
+    <xacro:include filename="$(find bandit_urdf)/defs/shoulder.xacro"/>
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+    <xacro:include filename="$(find bandit_urdf)/urdf/bandit.gazebo" />
+    
+    <!-- Used for fixing robot to Gazebo 'base_link' -->
+    <link name="world"/>
+
+    <joint name="fixed" type="fixed">
+        <parent link="world"/>
+        <child link="torso_link"/>
+    </joint>
+
+    <xacro:torso name="torso" parent="world">
+        <origin xyz="-0.00 0 ${body_height/2}" rpy="0 0 0"/>
+    </xacro:torso>
+	
+    <xacro:head name="head" parent="torso_link">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:head>
+	
+	<xacro:shoulder side="left" parent="torso_link" reflect="1">
+        <origin xyz="0 ${body_width/2+.01} 0" rpy="0 0 0"/>
+    </xacro:shoulder>
+
+	<xacro:shoulder side="right" parent="torso_link" reflect="-1">
+        <origin xyz="0 ${-(body_width/2+.01)} 0" rpy="0 0 0"/>
+    </xacro:shoulder>
+
+</robot>

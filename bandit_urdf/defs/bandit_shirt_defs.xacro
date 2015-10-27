@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+			 name="bandit">
+
+	
+	<include filename="$(find bandit_urdf)/defs/common.xacro"/>
+	<!--include filename="$(find pr2_description)/urdf/common.xacro"/-->
+	<include filename="$(find bandit_urdf)/defs/shirt_materials.xacro"/>
+	<include filename="$(find bandit_urdf)/defs/torso.xacro"/>
+	<include filename="$(find bandit_urdf)/defs/logo.xacro"/>
+	<include filename="$(find bandit_urdf)/defs/head.xacro"/>
+	<include filename="$(find bandit_urdf)/defs/shoulder.xacro"/>
+	<include filename="$(find bandit_urdf)/defs/pioneerbase.xacro"/>
+	<include filename="$(find bandit_urdf)/defs/screws.xacro"/>
+<!--	<include filename="$(find bandit_urdf)/defs/stage.xacro"/> -->
+	<include filename="$(find bandit_urdf)/defs/gazebo.urdf.xacro"/>
+
+
+	<!--<xacro:pr2_base_v0 name="base"/>-->
+
+	<xacro:bandit_torso name="bandit_torso" parent="/robot/odom">
+		<origin xyz="-0.00 0 ${body_height/2}" rpy="0 0 0"/>
+	</xacro:bandit_torso>
+
+	<xacro:bandit_head name="bandit_head" parent="bandit_torso_link">
+			<origin xyz="0 0 ${body_height/2 +neck_height/2+0.01}" rpy="0 0 0"/>
+		<!--<origin xyz="0 0 ${body_height/2+neck_height/2+0.01}" rpy="0 0 0"/>-->
+	</xacro:bandit_head>
+
+	<xacro:bandit_shoulder side="left" parent="bandit_torso_link" reflect="1">
+		<origin xyz="0 ${body_width/2+.01} 0" rpy="0 0 0"/>
+		<!--<origin xyz="0 ${body_width/2+.01} ${body_height*3/8}" rpy="0 0 0"/>-->
+	</xacro:bandit_shoulder>
+  
+  	<xacro:bandit_shoulder side="right" parent="bandit_torso_link" reflect="-1">
+		<origin xyz="0 -${body_width/2+.01} 0" rpy="0 0 0"/>
+	</xacro:bandit_shoulder>
+
+</robot>

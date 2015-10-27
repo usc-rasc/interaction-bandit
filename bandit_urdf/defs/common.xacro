@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot>
+
+	<!-- math parameters -->
+	<property name="M_PI" value="3.1415926535897931" />
+
+
+	<!-- bandit robot parameters -->
+  	<property name="body_length" value="0.1143"/>
+  	<property name="body_width" value="0.30"/>
+  	<property name="body_height" value="0.2667"/>
+
+  	<property name="neck_height" value="0.076"/>
+  	<property name="neck_radius" value="0.035"/>
+
+  	<property name="head_length" value="0.145"/>
+  	<property name="head_width" value="0.145"/>
+  	<property name="head_height" value="0.15"/>
+
+  	<property name="shoulder_pan_radius" value="0.04"/>
+  	<property name="shoulder_pan_height" value="0.08"/>
+
+</robot>

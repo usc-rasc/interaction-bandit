@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+	<!-- use the below line to specify path to meshes and materials -->
+	<property name="mesh_path" value="package://bandit_urdf/meshes/bandit_mesh"/>
+
+
+	<!-- other properties -->
+	
+
+	<!-- torso xacro definition -->
+    <xacro:macro name="torso" params="name parent *origin">
+		<!-- torso_link -->    
+    	<link name = "${name}_link">
+        	<inertial>
+        		<mass value="0.01"/>
+        		<origin xyz="0 0 0"/>
+        		<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        	</inertial>
+        	<visual name="${name}_visual">
+        		<material name="Torso"/>
+          		<origin xyz="0 0 0.0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+       			<geometry name="${name}_geom">
+            		<mesh filename="${mesh_path}/body_small.stl"/>
+          		</geometry>
+        	</visual>
+        	<collision>
+        		<origin xyz="0 0 -0.067" rpy="0 0 0"/>
+          		<geometry>
+          			<box size="0.152 0.228 0.282"/>
+          		</geometry>
+      		</collision>
+    	</link>
+
+
+		<!-- stop_link-->
+		<link name="stop_link">
+		    <inertial>
+		        <mass value="0.01"/>
+                <origin xyz="0 0 0"/>
+		        <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+		    </inertial>
+		    <visual name="base_visual">
+		        <origin xyz="0 0 0" rpy="0 ${M_PI/2} ${M_PI}"/>
+		        <geometry name="pioneer_geom">
+		            <mesh filename="${mesh_path}/stop_switch_small.STL"/>
+		        </geometry>
+		        <material name="Red"/>
+		    </visual>
+		    <collision>
+		        <origin xyz="0 0 0" rpy="0 0 0"/>
+		        <geometry>
+		            <box size="0 0 0"/>
+		        </geometry>
+		    </collision>
+		</link>
+
+
+		<!-- stop_joint -->
+		<joint name="stop_joint" type="fixed">
+		    <origin xyz="-0.08 0 -0.04" rpy="0 0 0"/>
+		    <parent link="torso_link"/>
+		    <child link="stop_link"/>
+		</joint>
+    
+    
+    </xacro:macro>
+
+</robot>
+
