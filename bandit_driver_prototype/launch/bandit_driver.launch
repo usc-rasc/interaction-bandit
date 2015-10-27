@@ -1,0 +1,35 @@
+<launch>
+    <arg name="bandit_id" default="2"/>
+    <arg name="urdf_filename" default="$(find bandit_urdf)/urdf/bandit_defs.urdf"/>
+    <arg name="use_joint_limits" default="false" />
+
+	<arg name="debug" default="false" />
+	<arg if="$(arg debug)" name="launch-prefix" value="gdb -ex run --args" />
+	<arg unless="$(arg debug)" name="launch-prefix" value="" />
+
+    <arg name="pkg" value="bandit_driver_prototype" />
+    <arg name="name" default="bandit_driver" />
+    <arg name="type" default="$(arg name)_node" />
+    <arg name="rate" default="30" />
+    <arg name="args" value="_loop_rate:=$(arg rate) _urdf_filename:=$(arg urdf_filename) _use_joint_limits:=$(arg use_joint_limits) _tf_prefix:=bandit" />
+    <arg name="manager" default="manager" />
+    <arg name="nodelet" default="false" />
+
+    <rosparam param="/$(arg name)/pids" command="load" file="$(find bandit_driver_prototype)/params/bandit_$(arg bandit_id)/pids.yaml" />
+    <rosparam param="/$(arg name)/joints" command="load" file="$(find bandit_driver_prototype)/params/bandit_$(arg bandit_id)/joints.yaml" />
+
+    <node
+        if="$(arg nodelet)"
+        pkg="nodelet"
+        type="nodelet"
+        name="$(arg name)"
+        args="load $(arg pkg)/$(arg name) $(arg manager) $(arg args)"
+        output="screen" />
+    <node
+        unless="$(arg nodelet)"
+		launch-prefix="$(arg launch-prefix)"
+        pkg="$(arg pkg)"
+        type="$(arg type)"
+        name="$(arg name)"
+        args="$(arg args)" />
+</launch>

@@ -1,0 +1,17 @@
+# Prolific USB-to-serial adapter in AirLink101 AC-USBS product
+SUBSYSTEM=="tty",ATTRS{idVendor}=="067b",ATTRS{idProduct}=="2303",MODE="0666",SYMLINK+="bandit/airlink-serial"
+
+# FTDI USB to RS-422/485 adapter in VScom USB-COM-I product
+SUBSYSTEM=="tty",ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",MODE="0666",SYMLINK+="bandit/vscom-serial"
+
+# any usb-to-serial adapter
+SUBSYSTEM=="tty",SUBSYSTEMS=="usb-serial",MODE="0666",SYMLINK+="bandit/usb-serial"
+
+# any PnP serial adapter
+SUBSYSTEM=="tty",SUBSYSTEMS=="pnp",MODE="0666",SYMLINK+="bandit/serial"
+
+# Atmel AVR ISP MkII
+SUBSYSTEM=="usb",ATTRS{idVendor}=="03eb",ATTRS{idProduct}=="2104",MODE="0666",SYMLINK+="bandit/avrispmk2-programmer"
+
+# Atmel AVR Dragon
+SUBSYSTEM=="usb",ATTRS{idVendor}=="03eb",ATTRS{idProduct}=="2107",MODE="0666",SYMLINK+="bandit/avrdragon-programmer"
