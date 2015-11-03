@@ -1,0 +1,14 @@
+# The all target does the heavy lifting, creating the build directory and
+# invoking CMake
+all: 
+	cp CMakeLists.txt.standalone CMakeLists.txt
+	@mkdir -p build
+	cd build && cmake ..
+	cd build && make
+
+PACKAGE_NAME=$(shell basename $(PWD))
+
+
+clean:
+	-cd build && make clean
+	rm -rf build
